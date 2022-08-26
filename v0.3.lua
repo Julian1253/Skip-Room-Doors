@@ -3,6 +3,7 @@ local CanSkipRoom_50 = true
 local CanAutoUnlockDoors = true
 local CanPullTheLevers = true
 local cooldown = true
+local cooldownwait = 0.5
 
 do
 	local UIS = game:GetService("UserInputService")
@@ -50,9 +51,9 @@ do
 					end
                 	game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
             	end
-            	task.wait(.35)
+            	task.wait(.45)
             	CurrentDoor.ClientOpen:FireServer()
-				task.wait(1)
+				task.wait(cooldownwait)
 				cooldown = true
         	end)
     	end
