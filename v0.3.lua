@@ -2,7 +2,7 @@ local Keybind = Enum.KeyCode.H
 local CanSkipRoom_50 = true
 local CanAutoUnlockDoors = true
 local CanPullTheLevers = true
-
+local cooldown = true
 
 do
 	local UIS = game:GetService("UserInputService")
@@ -12,7 +12,9 @@ do
 	UIS.InputBegan:Connect(function(input, typing)
     	if typing then return end
     	if input.KeyCode == Keybind then
+			if not cooldown then return end
         	pcall(function()
+				cooldown = false
             	local key = false
 				local lever = false
             	local CurrentDoor = workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door")
@@ -50,6 +52,8 @@ do
             	end
             	task.wait(.35)
             	CurrentDoor.ClientOpen:FireServer()
+				task.wait(1)
+				cooldown = true
         	end)
     	end
 	end)
