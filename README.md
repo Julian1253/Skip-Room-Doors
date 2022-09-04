@@ -1,6 +1,6 @@
 # Doors
 
-A script about roblox doors game, pls do not take credit :(
+A script about roblox doors game, pls do not take credit 😭
 or i will find you.
 
 V0.1 : https://github.com/Relkss/Doors/blob/main/v0.1.lua
